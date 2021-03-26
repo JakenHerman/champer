@@ -12,26 +12,24 @@ export const getMatch = (matchId) => appendKey(`/lol/match/v4/matches/${matchId}
 
 const appendKey = (link) => `${link}?api_key=${process.env.REACT_APP_RIOT_KEY}`;
 
-export const fetchChampionMastery = (id, name) => {
+export const fetchChampionMastery = (id, name, summonerLevel) => {
   axios.get(getChampionMastery(id))
       .then(res => {
-        store.dispatch({ 
-            type: MODIFY_CHAMPIONS_LIST,
-            payload: {
+            const payload = {
                 name: name,
                 champions: res.data,
-                matchHistory: []
-            }
+                matchHistory: [],
+                summonerLevel: summonerLevel
+            };
+        store.dispatch({ 
+            type: MODIFY_CHAMPIONS_LIST,
+            payload: payload
         });
         if (store.getState().summoners.length === 1) {
             store.dispatch({
                 type: CHANGE_SELECTED_SUMMONER,
-                payload: {
-                    name: name,
-                    champions: res.data,
-                    matchHistory: []
-                }
-            })
+                payload: payload
+            });
         }
       })
       .catch(err => {

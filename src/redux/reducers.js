@@ -33,6 +33,7 @@ export const summonerReducer = (state = initialState, action) => {
       case MODIFY_CHAMPIONS_LIST:
         summoner = state.summoners.find(x => x.name === action.payload.name);
         summoner.champions = action.payload.champions;
+        summoner.summonerLevel = action.payload.summonerLevel;
         summoner = state.summoners.splice(state.summoners.indexOf(summoner), 1);
         return { ...state, summoners: [...state.summoners, ...summoner] };
       case SET_MATCH_HISTORY:

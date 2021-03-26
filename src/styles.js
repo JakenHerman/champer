@@ -19,13 +19,6 @@ export const Games = styled.div`
   margin-right: auto;
 `;
 
-export const SummonerLevel = styled.h1`
-  background-color: gray;
-  font-size: 1.5em;
-  height: -webkit-fill-available;
-  color: black;
-`;
-
 export const SummonerName = styled.h1`
   font-family: 'Friz Quadrata Std', sans-serif; 
   height: -webkit-fill-available;

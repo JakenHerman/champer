@@ -43,7 +43,7 @@ const fetchSummonerInfo = (action) => {
         .then(res => {
             if (res && res.data) {
                 const id = res.data.id;
-                fetchChampionMastery(id, action.payload.name);
+                fetchChampionMastery(id, action.payload.name, res.data.summonerLevel);
                 fetchGames(res.data.accountId, action.payload.name);
             }
         })
