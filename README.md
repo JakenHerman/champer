@@ -5,7 +5,7 @@
  3. Open terminal and run `cd documents` followed by `git clone https://www.github.com/jakenherman/champer`
  4. Once the project is cloned, open the project in your text editor of choice. (For me, `cd champer && code .`)
  5. Run `yarn add` from the directory to insure all packages are installed. (If you get an error here you can do `npm i` instead or `npm i -g yarn` followed by `yarn add`)
- 6. In the root directory of the project, create a file called `.env`, and past this: `REACT_APP_RIOT_KEY={YOUR_KEY}`, where `{YOUR_KEY}` is the key you copied in step **2**. Put your key in double-quotation marks like so : `"RGX-XX-XXX"`.
+ 6. In the root directory of the project, create a file called `.env`, and past this: `REACT_APP_RIOT_KEY={YOUR_KEY}`, where `{YOUR_KEY}` is the key you copied in step **2**. Put your key in double-quotation marks like so : `"RGX-XX-XXX"`. If you get a 403 error, it's likely that your Riot key is expired. The first key I got was expired, so just go back to https://developer.riotgames.com/ and make sure your key is not expired.
  7. Run `yarn start`.
  
  ---
