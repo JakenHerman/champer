@@ -19,9 +19,8 @@ export const SummonerLevel = styled.h1`
 `;
 
 export const SummonerName = styled.h1`
-  background-color: whitesmoke;
+  font-family: 'Friz Quadrata Std', sans-serif; 
   height: -webkit-fill-available;
-  font-size: 1.5em;
   color: black;
   grid-area: name;
 `;
@@ -50,4 +49,9 @@ export const Champion = styled.div`
 
 export const ChampionName = styled.p`
   font-weight: bolder;
+  font-family: 'Friz Quadrata Std', sans-serif; 
+`;
+
+export const Header = styled.h2`
+  font-family: 'Friz Quadrata Std', sans-serif; 
 `;

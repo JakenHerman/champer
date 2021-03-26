@@ -1,6 +1,6 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { SummonerName, SummaryWrapper, SummonerLevel, ChampionImage, Champion, ChampionName } from './styles';
+import { SummonerName, SummaryWrapper, SummonerLevel, ChampionImage, Champion, ChampionName, Header } from './styles';
 import SideMenu from './SideMenu';
 import { getImageLink } from './RiotLinks';
 
@@ -27,7 +27,7 @@ const TopChampions = () => {
   const selectedSummoner = useSelector(state => state.selectedSummoner);
   return (
     <div>
-      <h2>Top 3 Champions</h2>
+      <Header>Top 3 Champions</Header>
       {selectedSummoner.champions.slice(0, 3).map((x, i) => {
           return <ChampionCircle key={i} championId={x.championId} />;
       })}
