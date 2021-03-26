@@ -19,11 +19,9 @@ import * as serviceWorker from './serviceWorker';
 // TODO: on click of champion points in sparkline charts, show game info stats
 
 ReactDOM.render(
-  <React.StrictMode>
     <Provider store={store}>
       <App />
-    </Provider>
-  </React.StrictMode>,
+    </Provider>,
   document.getElementById('root')
 );
 

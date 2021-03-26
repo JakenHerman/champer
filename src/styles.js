@@ -31,3 +31,23 @@ export const Menu = styled.div`
   height: -webkit-fill-available;
   background-color: blue;
 `;
+
+export const ChampionImage = styled.img`
+  border-radius: 50%;
+  margin: 15px;
+`;
+
+export const TopThree = styled.div`
+  margin-left: auto;
+  margin-right: auto;
+`;
+
+export const Champion = styled.div`
+  text-align: center;
+  display: inline-block;
+  margin: 15px;
+`;
+
+export const ChampionName = styled.p`
+  font-weight: bolder;
+`;

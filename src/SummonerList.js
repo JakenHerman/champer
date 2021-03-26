@@ -16,8 +16,8 @@ const SummonerList= () => {
             {summoners.map(s => (
                 <Menu.Item
                     key={uuidv4()}
-                    name={s}
-                    active={selectedSummoner === s}
+                    name={s.name}
+                    active={selectedSummoner.name === s.name}
                     onClick={() => dispatch({ type: CHANGE_SELECTED_SUMMONER, payload: s })}
                 />
             ))}
@@ -30,7 +30,7 @@ const SummonerList= () => {
                         content: '+',
                         disabled: !summonerName,
                         onClick: () => {
-                            dispatch({ type: ADD_TO_SUMMONER_LIST, payload: summonerName });
+                            dispatch({ type: ADD_TO_SUMMONER_LIST, payload: { name: summonerName, champions: [] } });
                             setSummonerName('');
                         }}
                     }
