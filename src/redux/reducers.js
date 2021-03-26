@@ -46,7 +46,6 @@ export const summonerReducer = (state = initialState, action) => {
           ...summoner,
           matchHistory: action.payload.matchHistory
         };
-        console.log([...state.summoners.filter(x => x.name !== summoner.name), summoner]);
         return { ...state, summoners: [...state.summoners.filter(x => x.name !== summoner.name), summoner] };
       case ADD_MATCH_TO_DETAILED_LIST:
         return { ...state, detailedMatches: [...state.detailedMatches, action.payload] };

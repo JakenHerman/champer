@@ -27,7 +27,6 @@ const GameDetailed = () => {
   }
 
   const getSummoner = (id) => {
-    console.log(fullMatch.participants, id);
     const summoner = fullMatch.participants.find(x => +x.participantId === +id);
     return summoner;
   };
