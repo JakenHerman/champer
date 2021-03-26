@@ -11,7 +11,7 @@ import { ADD_MATCH_TO_DETAILED_LIST } from '../redux/actions';
 const GameLogs = () => {
   const selectedSummoner = useSelector(state => state.selectedSummoner);
   const detailedMatches = useSelector(state => state.detailedMatches);
-  const lastTenMatches = selectedSummoner.matchHistory.matches.slice(0, 10);
+  const lastTenMatches = selectedSummoner.matchHistory.slice(0, 10);
 
   useEffect(() => { console.log(detailedMatches); }, [detailedMatches]);
 

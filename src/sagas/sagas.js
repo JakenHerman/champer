@@ -28,7 +28,7 @@ export const fetchGames = (accountId, name) => {
                     type: SET_MATCH_HISTORY,
                     payload: {
                         name: name,
-                        matchHistory: res.data
+                        matchHistory: res.data.matches
                     }
                 });
             }
@@ -69,5 +69,4 @@ export function* watchAddMatchToDetailedList(action) {
 export function* watchAddSummoner() {
     getChampionData();
     yield takeEvery(ADD_TO_SUMMONER_LIST, fetchSummonerInfo);
-    yield takeEvery(ADD_TO_SUMMONER_LIST, fetchGames);
 };

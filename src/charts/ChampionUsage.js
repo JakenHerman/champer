@@ -26,6 +26,9 @@ const ChampionUsage = (props) => {
       plotShadow: false,
       type: 'pie'
     },
+    credits: {
+      enabled: false
+    },
     series: [{
       name: 'Champion Points',
       colorByPoint: true,
