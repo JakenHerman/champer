@@ -5,7 +5,7 @@ import ChampionCircle from './ChampionCircle';
 
 const TopChampions = () => {
   const selectedSummoner = useSelector(state => state.selectedSummoner);
-  return selectedSummoner ? (
+  return (selectedSummoner && selectedSummoner.champions) ? (
     <div>
       <Header>Top 3 Champions</Header>
       {selectedSummoner.champions.slice(0, 3).map((x, i) => {

@@ -50,15 +50,19 @@ const ChampionUsage = (props) => {
   const selectedSummoner = useSelector(state => state.selectedSummoner);
   const champions = useSelector(state => state.championInformation);
   if (selectedSummoner && selectedSummoner.champions) {
-    selectedSummoner.champions.forEach(x => {
-      const champion = champions.find(c => +c[1].key === x.championId);
-      if (champion) {
-        options.series[0].data.push({
-          name: champion[0],
-          y: x.championPoints
-        });
-      }
-    })
+    try {
+      selectedSummoner.champions.forEach(x => {
+        const champion = champions.find(c => +c[1].key === x.championId);
+        if (champion) {
+          options.series[0].data.push({
+            name: champion[0],
+            y: x.championPoints
+          });
+        }
+      })
+    } catch (e) {
+      console.error(e);
+    }
   }
 
 
