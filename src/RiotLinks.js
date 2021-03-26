@@ -7,6 +7,7 @@ export const getSummonerInfoByName = (summonerName) => appendKey(`/lol/summoner/
 export const getChampionMastery = (summonerId) => appendKey(`/lol/champion-mastery/v4/champion-masteries/by-summoner/${summonerId}`);
 export const getChampionPhoto = (photo) => `https://ddragon.leagueoflegends.com/cdn/11.6.1/img/champion/${photo}`;
 export const getItemPhoto = (item) => `https://ddragon.leagueoflegends.com/cdn/11.6.1/img/item/${item}.png`;
+export const getSpellPhoto = (spell) => `http://ddragon.leagueoflegends.com/cdn/11.6.1/img/spell/${spell}.png`;
 export const getGameHistory = (accountId) => appendKey(`/lol/match/v4/matchlists/by-account/${accountId}`);
 export const getMatch = (matchId) => appendKey(`/lol/match/v4/matches/${matchId}`);
 

@@ -13,17 +13,17 @@ const SummonerSummary = () => {
   return (
     <SummaryWrapper>
       <SubMenu />
-      <Segment placeholder>
-        <Segment circular>
+      <Segment inverted placeholder>
+        <Segment inverted style={{ border: '1px solid white' }} circular>
           <Statistic color='yellow'>
             <Statistic.Value>{selectedSummoner.summonerLevel}</Statistic.Value>
-            <Statistic.Label>Level</Statistic.Label>
+            <Statistic.Label style={{ color: 'white' }}>Level</Statistic.Label>
           </Statistic>
         </Segment>
         <SummonerName>{selectedSummoner.name}</SummonerName>
       </Segment>
 
-      <Segment>
+      <Segment inverted>
         {view === 'Champions' &&
           <Champions />
         }

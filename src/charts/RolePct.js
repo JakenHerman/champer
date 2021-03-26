@@ -18,17 +18,34 @@ const RolePct = () => {
       ];
       setOptions({
         chart: {
-          type: 'column'
+          backgroundColor: {
+            linearGradient: { x1: 0, y1: 0, x2: 1, y2: 1 },
+            stops: [
+                [0, '#2a2a2b'],
+                [1, '#3e3e40']
+            ]
+          },
+          style: {
+              fontFamily: '\'Unica One\', sans-serif'
+          },
+          plotBorderColor: '#606063',
+            type: 'column'
         },
         title: {
-          text: 'Top Lanes'
+          text: 'Top Lanes',
+          style: {
+            color: 'white'
+          }
         },
         xAxis: {
           categories: ['Jungle', 'Mid', 'Top', 'Bottom']
         },
         yAxis: {
           title: {
-            text: 'Games Played'
+            text: 'Games Played',
+            style: {
+              color: 'white'
+            }
           }
         },
         credits: {

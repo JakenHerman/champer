@@ -7,13 +7,11 @@ import { Card } from 'semantic-ui-react';
 import * as axios from 'axios';
 import { getMatch } from '../RiotLinks';
 import { ADD_MATCH_TO_DETAILED_LIST } from '../redux/actions';
+import GameDetailed from './GameDetailed';
 
 const GameLogs = () => {
   const selectedSummoner = useSelector(state => state.selectedSummoner);
-  const detailedMatches = useSelector(state => state.detailedMatches);
   const lastTenMatches = selectedSummoner.matchHistory.slice(0, 10);
-
-  useEffect(() => { console.log(detailedMatches); }, [detailedMatches]);
 
   useEffect(() => {
     const promises = [];
@@ -38,6 +36,7 @@ const GameLogs = () => {
     <div>
       <Header>Last 10 Games</Header>
       <Games>
+        <GameDetailed />
         {lastTenMatches.length === 10
           ? (
               <Card.Group>

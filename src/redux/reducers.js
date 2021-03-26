@@ -7,7 +7,9 @@ import {
     FILL_CHAMPION_INFORMATION,
     SET_MATCH_HISTORY,
     SET_SELECTED_MATCH,
-    ADD_MATCH_TO_DETAILED_LIST
+    ADD_MATCH_TO_DETAILED_LIST,
+    FILL_SUMMONER_SPELLS_INFORMATION,
+    SET_GAME_VIEW_STATE
 } from './actions';
 
 const initialState = {
@@ -16,7 +18,9 @@ const initialState = {
   selectedSummoner: null,
   selectedMatch: {},
   detailedMatches: [],
-  view: 'Champions'
+  view: 'Champions',
+  summonerSpells: [],
+  gameViewOpen: false
 };
 
 export const summonerReducer = (state = initialState, action) => {
@@ -45,8 +49,12 @@ export const summonerReducer = (state = initialState, action) => {
         return { ...state, detailedMatches: [...state.detailedMatches, action.payload] };
       case FILL_CHAMPION_INFORMATION:
         return { ...state, championInformation: action.payload };
+      case FILL_SUMMONER_SPELLS_INFORMATION:
+        return { ...state, summonerSpells: action.payload };
       case SET_SELECTED_MATCH:
         return { ...state, selectedMatch: action.payload };
+      case SET_GAME_VIEW_STATE:
+        return { ...state, gameViewOpen: action.payload };
       default:
         return state;
     }

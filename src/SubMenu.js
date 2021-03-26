@@ -13,7 +13,7 @@ const SubMenu = () => {
   ];
   
   return (
-    <Menu secondary>
+    <Menu inverted secondary>
       {options.map((x, i) => {
         return (
           <Menu.Item active={view === x} key={i} onClick={() => dispatch({ type: CHANGE_SELECTED_VIEW, payload: x })}>

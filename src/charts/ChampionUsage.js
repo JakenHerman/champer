@@ -8,6 +8,9 @@ const ChampionUsage = (props) => {
 
   const options = {
     title: {
+      style: {
+        color: 'white'
+      },
       text: 'Champion Usage'
     },
     plotOptions: {
@@ -21,19 +24,27 @@ const ChampionUsage = (props) => {
       }
     },
     chart: {
-      plotBackgroundColor: null,
-      plotBorderWidth: null,
-      plotShadow: false,
-      type: 'pie'
-    },
-    credits: {
-      enabled: false
-    },
-    series: [{
-      name: 'Champion Points',
-      colorByPoint: true,
-      data: []
-  }]
+      backgroundColor: {
+        linearGradient: { x1: 0, y1: 0, x2: 1, y2: 1 },
+        stops: [
+            [0, '#2a2a2b'],
+            [1, '#3e3e40']
+        ]
+      },
+      style: {
+          fontFamily: '\'Unica One\', sans-serif'
+      },
+      plotBorderColor: '#606063',
+        type: 'pie'
+      },
+      credits: {
+        enabled: false
+      },
+      series: [{
+        name: 'Champion Points',
+        colorByPoint: true,
+        data: []
+    }]
   };
 
   const selectedSummoner = useSelector(state => state.selectedSummoner);

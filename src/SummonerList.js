@@ -12,7 +12,7 @@ const SummonerList= () => {
 
     return (
         <div>
-        <Menu style={{ width: '95%', marginLeft: 'auto', marginRight: 'auto' }} pointing secondary>
+        <Menu inverted style={{ width: '95%', marginLeft: 'auto', marginRight: 'auto' }} pointing secondary>
             {summoners.map(s => (
                 <Menu.Item
                     key={uuidv4()}

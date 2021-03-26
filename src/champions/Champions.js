@@ -10,12 +10,12 @@ const Champions = () => {
       <TopChampions />
       <Grid stackable columns={2}>
         <Grid.Column>
-          <Segment>
+          <Segment inverted>
             <ChampionUsage />
           </Segment>
         </Grid.Column>
         <Grid.Column>
-          <Segment>
+          <Segment inverted>
             <RolePct />
           </Segment>
         </Grid.Column>

@@ -1,7 +1,7 @@
 import { createStore, applyMiddleware } from 'redux';
 import createSagaMiddleware from 'redux-saga';
 import { summonerReducer } from './reducers';
-import { watchAddSummoner, watchAddMatchToDetailedList, watchSetMatch } from '../sagas/sagas';
+import { watchAddSummoner, watchSelectedMatch } from '../sagas/sagas';
 
 const sagaMiddleware = createSagaMiddleware();
 
@@ -12,7 +12,6 @@ let store = createStore(
 );
 
 sagaMiddleware.run(watchAddSummoner);
-// sagaMiddleware.run(watchAddMatchToDetailedList);
-// sagaMiddleware.run(watchSetMatch);
+sagaMiddleware.run(watchSelectedMatch);
 
 export default store;

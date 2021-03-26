@@ -1,9 +1,10 @@
 import { takeEvery, takeLeading } from 'redux-saga/effects';
-import { ADD_MATCH_TO_DETAILED_LIST, ADD_TO_SUMMONER_LIST, FILL_CHAMPION_INFORMATION, SET_MATCH_HISTORY, SET_SELECTED_MATCH } from '../redux/actions';
+import { SET_GAME_VIEW_STATE, ADD_TO_SUMMONER_LIST, FILL_CHAMPION_INFORMATION, SET_MATCH_HISTORY, SET_SELECTED_MATCH, FILL_SUMMONER_SPELLS_INFORMATION } from '../redux/actions';
 import * as axios from 'axios';
 import store from '../redux/store';
-import { getSummonerInfoByName, fetchChampionMastery, getGameHistory, getMatch } from '../RiotLinks';
+import { getSummonerInfoByName, fetchChampionMastery, getGameHistory } from '../RiotLinks';
 export const getAllChampions = () => 'https://ddragon.leagueoflegends.com/cdn/6.24.1/data/en_US/champion.json';
+export const getAllSummonerSpells = () => 'https://ddragon.leagueoflegends.com/cdn/11.6.1/data/en_US/summoner.json';
 
 export function getChampionData() {
     axios.get(getAllChampions())
@@ -18,6 +19,21 @@ export function getChampionData() {
             console.error(err);
         });
 };
+
+export function getSummonerSpells() {
+    axios.get(getAllSummonerSpells())
+        .then(res => {
+            const summonerSpells = Object.entries(res.data.data);
+            store.dispatch({
+                type: FILL_SUMMONER_SPELLS_INFORMATION,
+                payload: summonerSpells
+            });
+        })
+        .catch(err => {
+            console.error(err);
+        });
+};
+
 
 
 export const fetchGames = (accountId, name) => {
@@ -52,21 +68,19 @@ const fetchSummonerInfo = (action) => {
         });
   };
 
-export function* watchSetMatch(action) {
-    console.log('setting match to', action.payload);
-};
+  const changeGameViewState = (action) => {
+    store.dispatch({
+        type: SET_GAME_VIEW_STATE,
+        payload: action.payload // if we have a payload, game view should be open. otherwise, closed.
+    });
+  };
 
-export function* watchAddMatchToDetailedList(action) {
-    yield takeLeading(
-        ADD_MATCH_TO_DETAILED_LIST,
-        store.dispatch({
-            type: SET_SELECTED_MATCH,
-            payload: action.payload
-        })
-    );
+export function* watchSelectedMatch() {
+    yield takeEvery(SET_SELECTED_MATCH, changeGameViewState);
 };
 
 export function* watchAddSummoner() {
     getChampionData();
+    getSummonerSpells();
     yield takeEvery(ADD_TO_SUMMONER_LIST, fetchSummonerInfo);
 };
