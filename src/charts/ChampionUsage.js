@@ -51,7 +51,7 @@ const ChampionUsage = (props) => {
   const champions = useSelector(state => state.championInformation);
   if (selectedSummoner && selectedSummoner.champions) {
     try {
-      selectedSummoner.champions.forEach(x => {
+      [...selectedSummoner.champions].forEach(x => {
         const champion = champions.find(c => +c[1].key === x.championId);
         if (champion) {
           options.series[0].data.push({

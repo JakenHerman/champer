@@ -8,7 +8,7 @@ const TopChampions = () => {
   return (selectedSummoner && selectedSummoner.champions) ? (
     <div>
       <Header>Top 3 Champions</Header>
-      {selectedSummoner.champions.slice(0, 3).map((x, i) => {
+      {[...selectedSummoner.champions].slice(0, 3).map((x, i) => {
           return <ChampionCircle key={i} championId={x.championId} />;
       })}
     </div>
