@@ -4,7 +4,7 @@
  2. Copy this key.
  3. Open terminal and run `cd documents` followed by `git clone https://www.github.com/jakenherman/champer`
  4. Once the project is cloned, open the project in your text editor of choice. (For me, `cd champer && code .`)
- 5. Run `yarn add` from the directory to insure all packages are installed. (If you get an error here you can do `npm i` instead or `npm i -g yarn` followed by `yarn add`
+ 5. Run `yarn add` from the directory to insure all packages are installed. (If you get an error here you can do `npm i` instead or `npm i -g yarn` followed by `yarn add`)
  6. In the root directory of the project, create a file called `.env`, and past this: `REACT_APP_RIOT_KEY={YOUR_KEY}`, where `YOUR_KEY` is the key you copied in step **2**.
  7. Run `yarn start`.
  
