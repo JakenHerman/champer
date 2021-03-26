@@ -20,32 +20,36 @@ const GameQuickLook = ({ game }) => {
     img =  getImageLink(champion[1].image.full);
   }
   
-  const getParticipantId = () => {
-    return match.participantIdentities.find(x => x.player.summonerName === selectedSummoner.name).participantId;
+  const getParticipantId = (match) => {
+    return match.participantIdentities.find(x => x.player.summonerName.toLowerCase() === selectedSummoner.name.toLowerCase()).participantId;
   };
 
-  const getTeamId = (participantId) => {
+  const getTeamId = (match, participantId) => {
     return match.participants[participantId-1].teamId;
   };
 
-  const getWinLoss = (teamId) => {
+  const getWinLoss = (match, teamId) => {
     return match.teams.find(x => x.teamId === teamId).win || null;
   };
 
   const getDuration = () => `${(match.gameDuration / 60).toFixed(1)}m`;
 
-  const getKDA = () => {
-    const k = stats.kills;
-    const d = stats.deaths;
-    const a = stats.assists;
-    return `${k}/${d}/${a}`;
+  const getKDA = (stats) => {
+    if (stats) {
+      const k = stats.kills;
+      const d = stats.deaths;
+      const a = stats.assists;
+      return `${k}/${d}/${a}`;
+    }
+    return null;
   };
 
   const match = detailedMatches.find(x => x.gameId === game.gameId);
-  const participant = match ? match.participants[getParticipantId()-1] : null;
+  const participant = match ? match.participants[getParticipantId(match)-1] : null;
   const stats = participant ? participant.stats : null;
+
   return (img && match) ? (
-    <Card style={{ backgroundColor: 'black' }} color={getWinLoss(getTeamId(getParticipantId())) === 'Win' ? 'green' : 'red'} fluid>
+    <Card style={{ backgroundColor: 'black' }} color={getWinLoss(match, getTeamId(match, getParticipantId(match))) === 'Win' ? 'green' : 'red'} fluid>
       <Grid stackable columns='equal'>
           <Grid.Row style={{ marginTop: 15 }}>
             <Grid.Column>
@@ -53,7 +57,7 @@ const GameQuickLook = ({ game }) => {
             </Grid.Column>
             <Grid.Column>
               <Statistic size='tiny' color='yellow'>
-                <Statistic.Value>{getKDA()}</Statistic.Value>
+                <Statistic.Value>{getKDA(stats)}</Statistic.Value>
                 <Statistic.Label className='statLabel'>KDA</Statistic.Label>
               </Statistic>
             </Grid.Column>
@@ -81,8 +85,8 @@ const GameQuickLook = ({ game }) => {
               <SummonerSpells spell1Id={participant.spell1Id} spell2Id={participant.spell2Id} />
             </Grid.Column>
             <Grid.Column>
-              <Statistic size='tiny' color={getWinLoss(getTeamId(getParticipantId())) === 'Win' ? 'green' : 'red'}>
-                <Statistic.Value>{getWinLoss(getTeamId(getParticipantId())) === 'Win' ? 'Win' : 'Loss'}</Statistic.Value>
+              <Statistic size='tiny' color={getWinLoss(match, getTeamId(match, getParticipantId(match))) === 'Win' ? 'green' : 'red'}>
+                <Statistic.Value>{getWinLoss(match, getTeamId(match, getParticipantId(match))) === 'Win' ? 'Win' : 'Loss'}</Statistic.Value>
                 <Statistic.Label className='statLabel'>Result</Statistic.Label>
               </Statistic>
             </Grid.Column>
