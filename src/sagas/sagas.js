@@ -3,7 +3,7 @@ import { ADD_MATCH_TO_DETAILED_LIST, ADD_TO_SUMMONER_LIST, FILL_CHAMPION_INFORMA
 import * as axios from 'axios';
 import store from '../redux/store';
 import { getSummonerInfoByName, fetchChampionMastery, getGameHistory, getMatch } from '../RiotLinks';
-export const getAllChampions = () => 'http://ddragon.leagueoflegends.com/cdn/6.24.1/data/en_US/champion.json';
+export const getAllChampions = () => 'https://ddragon.leagueoflegends.com/cdn/6.24.1/data/en_US/champion.json';
 
 export function getChampionData() {
     axios.get(getAllChampions())
