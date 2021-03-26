@@ -38,11 +38,16 @@ const GameLogs = () => {
     <div>
       <Header>Last 10 Games</Header>
       <Games>
-        <Card.Group>
-          {lastTenMatches.map((x, i) => {
-            return <GameQuickLook game={x} key={i} />;
-          })}
-        </Card.Group>
+        {lastTenMatches.length === 10
+          ? (
+              <Card.Group>
+                {lastTenMatches.map((x, i) => {
+                  return <GameQuickLook game={x} key={i} />;
+                })}
+              </Card.Group>
+            )
+          : <div>Loading...</div>
+        }
       </Games>
     </div>
   );
