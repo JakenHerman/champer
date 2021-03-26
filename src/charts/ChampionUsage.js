@@ -46,7 +46,6 @@ const ChampionUsage = (props) => {
     }
   })
 
-  // { name: xx, y: xx }
   return (
     <Usage>
       <HighchartsReact

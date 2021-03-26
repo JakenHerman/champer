@@ -23,7 +23,7 @@ const GameQuickLook = ({ game }) => {
   };
 
   const getTeamId = (participantId) => {
-    return match.participants[participantId].teamId;
+    return match.participants[participantId-1].teamId;
   };
 
   const getWinLoss = (teamId) => {
@@ -39,10 +39,10 @@ const GameQuickLook = ({ game }) => {
           </Grid.Column>
           <Grid.Column width={13}>{match.gameMode} - {getWinLoss(getTeamId(getParticipantId())) === 'Win' ? 'W' : 'L'}</Grid.Column>
         </Grid.Row>
-        <Grid.Row>
+        <Grid.Row style={{ marginBottom: 15, marginLeft: '-2%' }}>
           <Grid.Column width={1}></Grid.Column>
           <Grid.Column width={14}>
-            <ItemList participantItems={match.participants[getParticipantId()].stats} />
+            <ItemList participantItems={match.participants[getParticipantId()-1].stats} />
           </Grid.Column>
           <Grid.Column width={1}></Grid.Column>
         </Grid.Row>

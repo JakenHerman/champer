@@ -1,7 +1,10 @@
 import styled from 'styled-components';
 
 export const SummaryWrapper = styled.div`
-
+  width: 95%;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 15px;
 `;
 
 export const Usage = styled.div`
