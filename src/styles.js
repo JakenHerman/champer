@@ -15,6 +15,7 @@ export const Points = styled.div`
 
 export const Games = styled.div`
   width: 70%;
+  min-height: 100vh;
   margin-left: auto;
   margin-right: auto;
 `;
