@@ -1,5 +1,5 @@
 import * as axios from 'axios';
-import { MODIFY_CHAMPIONS_LIST } from './redux/actions';
+import { CHANGE_SELECTED_SUMMONER, MODIFY_CHAMPIONS_LIST } from './redux/actions';
 import store from './redux/store';
 
 export const getImageLink = (image) => `http://ddragon.leagueoflegends.com/cdn/11.6.1/img/champion/${image}`;
@@ -22,7 +22,17 @@ export const fetchChampionMastery = (id, name) => {
                 champions: res.data,
                 matchHistory: []
             }
-        })
+        });
+        if (store.getState().summoners.length === 1) {
+            store.dispatch({
+                type: CHANGE_SELECTED_SUMMONER,
+                payload: {
+                    name: name,
+                    champions: res.data,
+                    matchHistory: []
+                }
+            })
+        }
       })
       .catch(err => {
           console.error(err);

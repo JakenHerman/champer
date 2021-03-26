@@ -12,8 +12,8 @@ import {
 
 const initialState = {
   championInformation: [],
-  summoners: [ { name: 'deOZad', champions: [], matchHistory: [] }],
-  selectedSummoner: { name: 'deOZad', champions: [], matchHistory: [] },
+  summoners: [],
+  selectedSummoner: null,
   selectedMatch: {},
   detailedMatches: [],
   view: 'Champions'

@@ -1,7 +1,7 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { SummonerName, SummaryWrapper, SummonerLevel } from './styles';
-import SideMenu from './SideMenu';
+import SubMenu from './SubMenu';
 import Champions from './champions/Champions';
 import GameLogs from './games/GameLogs';
 
@@ -11,9 +11,9 @@ const SummonerSummary = () => {
   
   return (
     <SummaryWrapper>
+      <SubMenu />
       <SummonerLevel>35</SummonerLevel>
       <SummonerName>{selectedSummoner.name}</SummonerName>
-      <SideMenu />
       {view === 'Champions' &&
         <Champions />
       }
