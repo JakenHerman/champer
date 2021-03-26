@@ -7,9 +7,7 @@ import { Provider } from 'react-redux';
 import * as serviceWorker from './serviceWorker';
 
 // TODO: create a slice to hold game view open or not
-// TODO: create a saga for obtaining new summoner name -> fires event to get champion names, etc.
 // TODO: create a stacked column highcharts where x axis is champion name, y axis is total games stacked by win/loss
-// TODO: create a pie chart for champion distribution 
 // TODO: add toggle to go from pie chart to bar chart
 // TODO: create sparkline charts for champion points
 // TODO: load deozad summoner on initial project load

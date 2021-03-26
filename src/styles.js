@@ -5,9 +5,24 @@ export const SummaryWrapper = styled.div`
   grid-template-areas: 
     "level name name"
     "sub graph1 graph2"
-    "sub focused focused";
+    "sub graph1 graph2";
   grid-template-rows: 50px 1fr 30px;
   grid-template-columns: 150px 1fr;
+`;
+
+export const Usage = styled.div`
+  grid-area: graph1;
+`;
+
+export const Points = styled.div`
+  grid-area: graph2;
+`;
+
+export const Games = styled.div`
+  width: 70%;
+  margin-left: auto;
+  margin-right: auto;
+  grid-area: graph1;
 `;
 
 export const SummonerLevel = styled.h1`

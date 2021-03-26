@@ -8,7 +8,7 @@ const SideMenu = () => {
 
   const options = [
     'Champions',
-    'Roles'
+    'Games'
   ];
   
   return (

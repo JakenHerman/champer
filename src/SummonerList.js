@@ -30,7 +30,7 @@ const SummonerList= () => {
                         content: '+',
                         disabled: !summonerName,
                         onClick: () => {
-                            dispatch({ type: ADD_TO_SUMMONER_LIST, payload: { name: summonerName, champions: [] } });
+                            dispatch({ type: ADD_TO_SUMMONER_LIST, payload: { name: summonerName, champions: [], matchHistory: [] } });
                             setSummonerName('');
                         }}
                     }
