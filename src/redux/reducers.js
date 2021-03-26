@@ -42,9 +42,12 @@ export const summonerReducer = (state = initialState, action) => {
         return { ...state, summoners: [...state.summoners, ...summoner] };
       case SET_MATCH_HISTORY:
         summoner = state.summoners.find(x => x.name === action.payload.name);
-        summoner.matchHistory = action.payload.matchHistory;
-        summoner = state.summoners.splice(state.summoners.indexOf(summoner), 1);
-        return { ...state, summoners: [...state.summoners, ...summoner] };
+        summoner = {
+          ...summoner,
+          matchHistory: action.payload.matchHistory
+        };
+        console.log([...state.summoners.filter(x => x.name !== summoner.name), summoner]);
+        return { ...state, summoners: [...state.summoners.filter(x => x.name !== summoner.name), summoner] };
       case ADD_MATCH_TO_DETAILED_LIST:
         return { ...state, detailedMatches: [...state.detailedMatches, action.payload] };
       case FILL_CHAMPION_INFORMATION:

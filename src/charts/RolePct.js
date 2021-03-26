@@ -9,6 +9,7 @@ const RolePct = () => {
   const selectedSummoner = useSelector(state => state.selectedSummoner);
 
   useEffect(() => {
+    console.log(selectedSummoner);
     if (selectedSummoner && selectedSummoner.matchHistory) {
       const values = [
         selectedSummoner.matchHistory.filter(l => l.lane === 'JUNGLE').length,

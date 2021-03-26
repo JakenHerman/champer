@@ -1,5 +1,5 @@
-import { takeEvery, takeLeading } from 'redux-saga/effects';
-import { SET_GAME_VIEW_STATE, ADD_TO_SUMMONER_LIST, FILL_CHAMPION_INFORMATION, SET_MATCH_HISTORY, SET_SELECTED_MATCH, FILL_SUMMONER_SPELLS_INFORMATION } from '../redux/actions';
+import { takeEvery } from 'redux-saga/effects';
+import { SET_GAME_VIEW_STATE, ADD_TO_SUMMONER_LIST, FILL_CHAMPION_INFORMATION, SET_MATCH_HISTORY, SET_SELECTED_MATCH, FILL_SUMMONER_SPELLS_INFORMATION, CHANGE_SELECTED_SUMMONER } from '../redux/actions';
 import * as axios from 'axios';
 import store from '../redux/store';
 import { getSummonerInfoByName, fetchChampionMastery, getGameHistory } from '../RiotLinks';
@@ -39,13 +39,19 @@ export function getSummonerSpells() {
 export const fetchGames = (accountId, name) => {
     axios.get(getGameHistory(accountId))
         .then(res => {
-            if (res && res.data) {
+            if (res && res.data && res.data.matches) {
                 store.dispatch({
                     type: SET_MATCH_HISTORY,
                     payload: {
                         name: name,
                         matchHistory: res.data.matches
                     }
+                });
+            }
+            if (store.getState().summoners.length === 1) {
+                store.dispatch({
+                    type: CHANGE_SELECTED_SUMMONER,
+                    payload: store.getState().summoners.find(x => x.name === name)
                 });
             }
         })

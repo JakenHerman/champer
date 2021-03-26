@@ -4,7 +4,7 @@ import HighchartsReact from 'highcharts-react-official';
 import { useSelector } from 'react-redux';
 import { Usage } from '../styles';
 
-const ChampionUsage = (props) => {
+const ChampionUsage = () => {
 
   const options = {
     title: {
@@ -49,21 +49,15 @@ const ChampionUsage = (props) => {
 
   const selectedSummoner = useSelector(state => state.selectedSummoner);
   const champions = useSelector(state => state.championInformation);
-  if (selectedSummoner && selectedSummoner.champions) {
-    try {
-      [...selectedSummoner.champions].forEach(x => {
-        const champion = champions.find(c => +c[1].key === x.championId);
-        if (champion) {
-          options.series[0].data.push({
-            name: champion[0],
-            y: x.championPoints
-          });
-        }
-      })
-    } catch (e) {
-      console.error(e);
+  selectedSummoner.champions.forEach(x => {
+    const champion = champions.find(c => +c[1].key === x.championId);
+    if (champion) {
+      options.series[0].data.push({
+        name: champion[0],
+        y: x.championPoints
+      });
     }
-  }
+  });
 
 
   return (

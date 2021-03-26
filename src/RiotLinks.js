@@ -26,12 +26,6 @@ export const fetchChampionMastery = (id, name, summonerLevel) => {
             type: MODIFY_CHAMPIONS_LIST,
             payload: payload
         });
-        if (store.getState().summoners.length === 1) {
-            store.dispatch({
-                type: CHANGE_SELECTED_SUMMONER,
-                payload: payload
-            });
-        }
       })
       .catch(err => {
           console.error(err);
