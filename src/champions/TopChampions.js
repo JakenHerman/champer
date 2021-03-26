@@ -5,14 +5,14 @@ import ChampionCircle from './ChampionCircle';
 
 const TopChampions = () => {
   const selectedSummoner = useSelector(state => state.selectedSummoner);
-  return (
+  return selectedSummoner ? (
     <div>
       <Header>Top 3 Champions</Header>
       {selectedSummoner.champions.slice(0, 3).map((x, i) => {
           return <ChampionCircle key={i} championId={x.championId} />;
       })}
     </div>
-  );
+  ) : null;
 };
 
 export default TopChampions;
