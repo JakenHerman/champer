@@ -22,9 +22,7 @@ export const Games = styled.div`
 
 export const SummonerName = styled.h1`
   font-family: 'Friz Quadrata Std', sans-serif; 
-  height: -webkit-fill-available;
   color: whitesmoke;
-  grid-area: name;
 `;
 
 export const ChampionImage = styled.img`
